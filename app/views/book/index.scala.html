@@ -1,0 +1,27 @@
+@(books : Set[Book])
+
+@main("Book"){
+
+	<h1>Books section</h1>
+	<table border=1>
+		<tr>
+			<th>Id</th>
+			<th>Title</th>
+			<th>Price</th>
+			<th>Author</th>
+		</tr>
+		@for(book <- books){
+			<tr>
+				<td>@book.id</td>
+				<td>@book.title</td>
+				<td>@book.price</td>
+				<td>@book.author</td>
+				<td><a href="@routes.BooksController.edit(book.id)">Edit</a>
+				<td><a href="@routes.BooksController.show(book.id)">Show</a>
+				<td><a href="@routes.BooksController.destroy(book.id)">Remove</a>
+			</tr>
+		}
+	</table>
+	<br>
+	<a href="@routes.BooksController.create()">Create new book</a>
+}
